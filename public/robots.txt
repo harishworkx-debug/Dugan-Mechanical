@@ -1,0 +1,5 @@
+# robots.txt for Dugan Mechanical
+User-agent: *
+Allow: /
+
+Sitemap: https://www.duganmechanical.com/sitemap.xml
