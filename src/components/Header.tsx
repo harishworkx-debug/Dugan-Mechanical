@@ -114,7 +114,7 @@ export function Header() {
           </div>
           <div className="flex flex-col leading-tight">
             <span className="text-lg font-bold tracking-tight">Dugan Mechanical</span>
-            <span className="text-xs text-slate-400">Plumbing Services in Maine</span>
+            <span className="text-xs text-slate-400">Plumbing & Heating • Saco, ME</span>
           </div>
         </Link>
 

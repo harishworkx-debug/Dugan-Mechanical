@@ -18,16 +18,17 @@ const locationsFile = fs.readFileSync(path.join(rootDir, 'src/data/locations.ts'
 const locationMatches = [...locationsFile.matchAll(/slug:\s*'([^']+)'/g)].map((m) => m[1]);
 const locations = Array.from(new Set(locationMatches));
 
-// Today's date YYYY-MM-DD
-const today = new Date().toISOString().split('T')[0];
+// Stable content release date to prevent Googlebot ignoring uniform lastmod changes
+const RELEASE_DATE = '2026-03-25';
+const CORE_UPDATE_DATE = '2026-04-10';
 
 const coreRoutes = [
-  { path: '/', changefreq: 'weekly', priority: '1.0' },
-  { path: '/services', changefreq: 'monthly', priority: '0.9' },
-  { path: '/service-areas', changefreq: 'monthly', priority: '0.8' },
-  { path: '/about', changefreq: 'monthly', priority: '0.7' },
-  { path: '/contact', changefreq: 'monthly', priority: '0.8' },
-  { path: '/faq', changefreq: 'monthly', priority: '0.6' },
+  { path: '/', changefreq: 'weekly', priority: '1.0', lastmod: CORE_UPDATE_DATE },
+  { path: '/services', changefreq: 'weekly', priority: '0.9', lastmod: CORE_UPDATE_DATE },
+  { path: '/service-areas', changefreq: 'weekly', priority: '0.9', lastmod: CORE_UPDATE_DATE },
+  { path: '/about', changefreq: 'monthly', priority: '0.7', lastmod: RELEASE_DATE },
+  { path: '/contact', changefreq: 'monthly', priority: '0.8', lastmod: CORE_UPDATE_DATE },
+  { path: '/faq', changefreq: 'monthly', priority: '0.7', lastmod: CORE_UPDATE_DATE },
 ];
 
 const urls = [];
@@ -36,7 +37,7 @@ const urls = [];
 for (const route of coreRoutes) {
   urls.push({
     loc: route.path === '/' ? `${BASE_URL}/` : `${BASE_URL}${route.path}`,
-    lastmod: today,
+    lastmod: route.lastmod,
     changefreq: route.changefreq,
     priority: route.priority,
   });
@@ -45,12 +46,12 @@ for (const route of coreRoutes) {
 // Add service-location combinations
 for (const service of services) {
   for (const location of locations) {
-    const isPrimaryLocation = location === 'portland-me';
+    const isPrimaryLocation = location === 'saco-me';
     urls.push({
       loc: `${BASE_URL}/${service}-${location}`,
-      lastmod: today,
+      lastmod: isPrimaryLocation ? CORE_UPDATE_DATE : RELEASE_DATE,
       changefreq: 'monthly',
-      priority: isPrimaryLocation ? '0.8' : '0.7',
+      priority: isPrimaryLocation ? '0.85' : '0.65',
     });
   }
 }

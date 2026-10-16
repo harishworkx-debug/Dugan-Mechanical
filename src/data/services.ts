@@ -342,9 +342,42 @@ export const services: Service[] = [
       },
     ],
   },
+  {
+    slug: 'heating-boiler-services',
+    name: 'Heating & Boiler Services',
+    shortDescription:
+      'Heating and boiler repair, seasonal maintenance, hydronic heating diagnostics, and radiator solutions for Southern Maine homes and businesses.',
+    longDescription:
+      'Reliable heating is essential during cold Maine winters. Dugan Mechanical provides professional hydronic heating repair, boiler diagnostics, circulator pump service, zone valve troubleshooting, and baseboard radiator repairs. Whether your boiler is failing to ignite, making clanking sounds, or heating unevenly across zones, our team delivers code-compliant, dependable heating craftsmanship.',
+    symptoms: [
+      'Radiators or baseboards remaining cold while the thermostat calls for heat',
+      'Boiler failing to ignite, short-cycling, or shutting down unexpectedly',
+      'Loud clanking, knocking, or gurgling sounds in hydronic heating pipes',
+      'Water leaking from boiler relief valves, piping joints, or circulator seals',
+      'Uneven heating across different zones or rooms in your home',
+    ],
+    serviceScope:
+      'Heating service includes testing burner and control operation, checking pressure relief valves, diagnosing circulator pumps and zone valves, purging air from hydronic lines, and inspecting for safety and heat efficiency.',
+    customerGuidance:
+      'Note your heating system type (boiler, hydronic baseboard, radiant floor), fuel source (natural gas, propane, oil), and whether any specific zones are affected when calling.',
+    image: 'https://images.pexels.com/photos/34938439/pexels-photo-34938439.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    imageAlt: 'Technician inspecting a hydronic heating and boiler system',
+    faqs: [
+      {
+        question: 'Why are some of my baseboards hot while others stay cold?',
+        answer:
+          'This is often caused by air trapped in the hydronic heating loop, a malfunctioning zone valve, or an issue with the circulator pump. A technician can bleed the line and test the zone controls.',
+      },
+      {
+        question: 'How often should a home boiler be serviced in Maine?',
+        answer:
+          'Annual pre-winter maintenance is strongly recommended in Maine to clean burner components, inspect safety relief valves, check system pressure, and ensure reliable operation before freezing temperatures arrive.',
+      },
+    ],
+  },
 ];
 
-export const primaryLocationSlug = 'portland-me';
+export const primaryLocationSlug = 'saco-me';
 
 export function getService(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug);

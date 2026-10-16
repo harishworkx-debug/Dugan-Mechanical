@@ -30,6 +30,7 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { services, primaryLocationSlug } from '@/data/services';
 import { locations } from '@/data/locations';
 import { businessInfo } from '@/data/business';
+import { googleReviews, googleReviewsSummary } from '@/data/reviews';
 
 const heroImage =
   'https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
@@ -59,11 +60,11 @@ const trustHighlights = [
 
 const featuredServices = [
   { slug: 'plumbing-repair', icon: Wrench },
+  { slug: 'heating-boiler-services', icon: Flame },
   { slug: 'drain-cleaning', icon: Droplets },
-  { slug: 'leak-detection', icon: Search },
-  { slug: 'pipe-repair', icon: Pipette },
   { slug: 'water-heater-repair', icon: Flame },
-  { slug: 'fixture-installation', icon: ShowerHead },
+  { slug: 'pipe-repair', icon: Pipette },
+  { slug: 'leak-detection', icon: Search },
 ];
 
 const commonConcerns = [
@@ -124,65 +125,46 @@ const seasonalTips = [
   },
 ];
 
-const testimonials = [
-  {
-    name: 'Mark T.',
-    location: 'Portland, ME',
-    rating: 5,
-    text: 'Dugan Mechanical responded right away when our main water supply line began leaking in the basement. They identified the issue immediately, explained the repair options clearly, and finished the job cleanly. Highly recommended!',
-  },
-  {
-    name: 'Sarah K.',
-    location: 'Freeport, ME',
-    rating: 5,
-    text: 'We needed our old tank water heater replaced with a high-efficiency unit. The team was prompt, courteous, and gave us an honest upfront quote. Our hot water pressure and reliability have never been better.',
-  },
-  {
-    name: 'David L.',
-    location: 'Brunswick, ME',
-    rating: 5,
-    text: 'Had an emergency clogged drain backing up into both showers. Dugan Mechanical came out on the same day and cleared the main line obstruction thoroughly without making any mess. Honest, professional craftsmanship.',
-  },
-];
-
-const homeFaqs = [
-  {
-    question: 'How quickly can Dugan Mechanical respond to a plumbing issue?',
-    answer:
-      'We prioritize rapid scheduling and emergency service for active leaks, burst pipes, and sewer backups. Call us directly at 207-468-0807 for immediate dispatch coordination across our Maine service areas.',
-  },
-  {
-    question: 'Do you work on both residential and commercial properties in Maine?',
-    answer:
-      'Yes. We handle residential homes, condominiums, apartments, as well as commercial spaces including retail stores, restaurants, and small office buildings throughout Cumberland, Androscoggin, Sagadahoc, and Kennebec counties.',
-  },
-  {
-    question: 'How do I know whether to repair or replace my water heater?',
-    answer:
-      'If your water heater is under 8–10 years old and the problem is a replaceable component like a thermostat, thermocouple, or heating element, repair is usually the most cost-effective choice. If the tank is leaking from corrosion or is over a decade old, replacement is typically recommended.',
-  },
-  {
-    question: 'What should I do immediately if a pipe bursts in my home?',
-    answer:
-      'First, locate and shut off your main water shutoff valve immediately to stop the flow of water. Then turn off electricity to any flooded areas at your breaker panel if it is safe to do so. Finally, call Dugan Mechanical at 207-468-0807 so we can dispatch a professional to repair the pipe.',
-  },
-  {
-    question: 'Do you charge upfront or give estimates before starting work?',
-    answer:
-      'We believe in honest, transparent communication. We assess your plumbing situation, explain the required repairs or installation steps, and discuss costs with you before any work begins so there are no surprises.',
-  },
-];
-
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Plumber',
+  '@type': ['Plumber', 'HVACBusiness'],
   name: businessInfo.name,
   telephone: businessInfo.phone,
   url: businessInfo.website,
-  areaServed: {
-    '@type': 'State',
-    name: 'Maine',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: businessInfo.city,
+    addressRegion: businessInfo.stateAbbrev,
+    postalCode: businessInfo.postalCode,
+    addressCountry: 'US',
   },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: `${googleReviewsSummary.rating.toFixed(1)}`,
+    reviewCount: `${googleReviewsSummary.totalReviews}`,
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: googleReviews.slice(0, 5).map((r) => ({
+    '@type': 'Review',
+    author: {
+      '@type': 'Person',
+      name: r.author,
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: r.rating,
+      bestRating: 5,
+    },
+    reviewBody: r.text,
+  })),
+  areaServed: [
+    { '@type': 'City', name: 'Saco' },
+    { '@type': 'City', name: 'Biddeford' },
+    { '@type': 'City', name: 'Scarborough' },
+    { '@type': 'City', name: 'Portland' },
+    { '@type': 'AdministrativeArea', name: 'Southern Maine' },
+  ],
   hasMap: businessInfo.mapsLink,
 };
 
@@ -190,8 +172,8 @@ export function HomePage() {
   return (
     <>
       <SEO
-        title={`${businessInfo.name} | Expert Plumbing Services in Maine`}
-        description={`Call ${businessInfo.phone}. ${businessInfo.name} provides professional plumbing repair, drain cleaning, water heater services, and fixture installation for homes and businesses in Maine.`}
+        title="Plumbing, Heating & HVAC in Saco, ME | Dugan Mechanical"
+        description="Looking for plumbing or heating service in Saco and Southern Maine? Contact Dugan Mechanical for plumbing repairs, water heaters, and heating solutions. Call 207-468-0807 to discuss your service needs."
         canonicalPath="/"
         ogImage={heroImage}
         structuredData={structuredData}
@@ -202,7 +184,7 @@ export function HomePage() {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Professional plumber repairing pipes in Maine"
+            alt="Professional plumber and heating technician repairing mechanical piping in Saco, Maine"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/80 to-navy-950/70" />
@@ -211,15 +193,15 @@ export function HomePage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-blue-600/20 px-4 py-1.5 text-sm font-semibold text-blue-300 ring-1 ring-blue-400/30 backdrop-blur">
               <Sparkles className="h-4 w-4 text-blue-400" />
-              <span>Trusted Local Plumbers in Maine</span>
+              <span>Plumbing & Heating in Saco & Southern Maine</span>
             </div>
             <h1 className="mt-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Dependable Plumbing Services for Your Maine Home or Business
+              Plumbing and Heating Services in Saco, Maine
             </h1>
             <p className="mt-6 text-lg text-slate-200 sm:text-xl leading-relaxed">
-              From emergency pipe leaks and stubborn drain clogs to water heater installations and
-              bathroom remodels, {businessInfo.name} delivers reliable, code-compliant craftsmanship
-              you can count on.
+              Looking for dependable plumbing or heating service in Saco and Southern Maine? From
+              active pipe leaks and water heater replacements to boiler diagnostics and stubborn drain
+              clogs, {businessInfo.name} delivers honest, code-compliant craftsmanship you can trust.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <CallCTA size="lg" />
@@ -242,7 +224,7 @@ export function HomePage() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-blue-400" />
-                <span>Same-Day & Emergency Help</span>
+                <span>Prompt Local Dispatch</span>
               </div>
             </div>
           </div>
@@ -309,18 +291,18 @@ export function HomePage() {
                 About Dugan Mechanical
               </span>
               <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-                Your Dependable Local Plumber Serving Maine Communities
+                Your Local Plumbing & Heating Contractor in Saco, Maine
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-slate-600">
-                At {businessInfo.name}, we know that plumbing issues disrupt your home comfort and
-                business productivity. Whether you are dealing with a silent pipe leak behind sheetrock,
-                a water heater producing lukewarm showers, or an older home in need of modern pipe
-                upgrades, our mission is to deliver dependable solutions that last.
+                Based right in Saco, {businessInfo.name} is dedicated to keeping your home comfortable
+                and your plumbing systems operating reliably. Whether you are dealing with a hidden pipe leak,
+                an aging water heater failing to produce hot water, or a hydronic heating boiler that needs
+                troubleshooting, our team provides practical solutions tailored to Southern Maine properties.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                We combine industry-certified technical skills with modern diagnostic equipment to pinpoint
-                problems accurately without unnecessary damage to your walls or flooring. We treat your property
-                with care and provide clear explanations before any wrench is turned.
+                We combine hands-on mechanical trade expertise with modern diagnostic tools to pinpoint
+                issues accurately. We believe in open communication, clean worksites, and transparent quotes
+                before any work starts.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4 border-t border-slate-100 pt-6">
                 <div>
@@ -623,40 +605,129 @@ export function HomePage() {
       </section>
 
       {/* Customer Reviews / Testimonials */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center">
-            <span className="text-sm font-bold uppercase tracking-wider text-blue-600">
-              Client Feedback
-            </span>
-            <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-              What Maine Homeowners Say
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-              We take pride in building long-term relationships through honest advice and clean, quality
-              workmanship.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {testimonials.map((test) => (
-              <div
-                key={test.name}
-                className="flex flex-col justify-between rounded-2xl bg-slate-50 p-8 shadow-sm ring-1 ring-slate-200"
-              >
-                <div>
-                  <div className="flex items-center gap-1 text-amber-500">
-                    {Array.from({ length: test.rating }).map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-200">
+                <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                <span>Verified Google Business Profile Reviews</span>
+              </div>
+              <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
+                What Our Customers Say
+              </h2>
+              <p className="mt-2 text-base text-slate-600 max-w-2xl">
+                Real feedback from homeowners and local businesses in Saco, Portland, and Southern Maine.
+                Owner Riordan and the Dugan Mechanical team are dedicated to doing the job right the first time.
+              </p>
+            </div>
+
+            {/* Google Rating Badge */}
+            <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
+                <span className="text-2xl font-black text-navy-900">G</span>
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xl font-extrabold text-navy-900">5.0</span>
+                  <div className="flex items-center text-amber-400">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <p className="mt-4 text-slate-700 leading-relaxed italic">"{test.text}"</p>
                 </div>
-                <div className="mt-6 border-t border-slate-200 pt-4">
-                  <p className="font-bold text-navy-900">{test.name}</p>
-                  <p className="text-sm text-slate-500">{test.location}</p>
+                <div className="flex items-center gap-2 text-xs text-slate-500 mt-0.5">
+                  <span>8 Verified Google Reviews</span>
+                  <span>•</span>
+                  <a
+                    href={businessInfo.mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-blue-600 hover:underline"
+                  >
+                    View on Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {googleReviews.map((review) => (
+              <div
+                key={review.id}
+                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/70 p-6 shadow-sm transition-all hover:border-slate-300 hover:shadow-md"
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-navy-900 text-sm">{review.author}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-[11px] text-slate-500 mt-0.5">
+                        {review.roleOrBadge && (
+                          <span className="rounded bg-blue-100 px-1.5 py-0.5 font-semibold text-blue-800 text-[10px]">
+                            {review.roleOrBadge}
+                          </span>
+                        )}
+                        <span>{review.timeAgo}</span>
+                      </div>
+                    </div>
+                    <div className="flex text-amber-400 shrink-0">
+                      {Array.from({ length: review.rating }).map((_, i) => (
+                        <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="mt-4 text-xs text-slate-700 leading-relaxed italic">
+                    "{review.text}"
+                  </p>
+                </div>
+
+                <div className="mt-5 border-t border-slate-200/80 pt-3 space-y-2">
+                  {review.services && review.services.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {review.services.map((svc, idx) => (
+                        <span
+                          key={idx}
+                          className="rounded bg-slate-200/70 px-2 py-0.5 text-[10px] font-medium text-slate-700"
+                        >
+                          {svc}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {review.positiveAttributes && review.positiveAttributes.length > 0 && (
+                    <div className="flex flex-wrap gap-1 text-[10px] text-slate-500">
+                      <span className="font-semibold text-slate-600">Positive:</span>
+                      <span>{review.positiveAttributes.slice(0, 3).join(', ')}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-12 rounded-xl bg-blue-50/60 p-6 text-center ring-1 ring-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-left">
+              <h3 className="text-sm font-bold text-navy-900">
+                Worked with Riordan and the Dugan Mechanical team recently?
+              </h3>
+              <p className="text-xs text-slate-600 mt-0.5">
+                Your feedback helps our local Saco business and allows other Southern Maine homeowners to find quality trade service.
+              </p>
+            </div>
+            <a
+              href={businessInfo.mapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+            >
+              <Star className="h-3.5 w-3.5 fill-white text-white" />
+              <span>Leave a Review on Google</span>
+            </a>
           </div>
         </div>
       </section>
@@ -745,11 +816,11 @@ export function HomePage() {
               Service Coverage
             </span>
             <h2 className="mt-3 text-3xl font-bold text-navy-900 sm:text-4xl">
-              Communities Dugan Mechanical Serves Across Maine
+              Communities Dugan Mechanical Serves in Southern Maine
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-              Headquartered in Portland, Maine, we proudly provide prompt plumbing services throughout
-              Cumberland, Androscoggin, Sagadahoc, and Kennebec counties.
+              Based in Saco, Maine, we proudly provide prompt plumbing and heating services throughout
+              York and Cumberland counties, including Biddeford, Scarborough, Portland, and nearby towns.
             </p>
           </div>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

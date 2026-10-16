@@ -18,8 +18,8 @@ export function Footer() {
               <span className="text-lg font-bold">Dugan Mechanical</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              Plumbing services for homes and businesses in Maine. Call to discuss your plumbing
-              needs with a local professional.
+              Licensed plumbing and heating contractor based in Saco, Maine. Providing dependable repairs,
+              water heaters, boilers, and drain services across York and Cumberland counties.
             </p>
             <a
               href={businessInfo.phoneLink}
@@ -111,7 +111,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 shrink-0 text-blue-400" />
-                <span className="text-slate-400">{businessInfo.state}</span>
+                <span className="text-slate-400">{businessInfo.city}, ME {businessInfo.postalCode} ({businessInfo.primaryServiceArea})</span>
               </li>
             </ul>
           </div>
@@ -119,12 +119,8 @@ export function Footer() {
 
         <div className="mt-12 border-t border-white/10 pt-6 text-sm text-slate-500">
           <p>
-            &copy; {new Date().getFullYear()} {businessInfo.name}. All rights reserved. Serving
-            communities in {businessInfo.state}.
-          </p>
-          <p className="mt-2 text-xs text-slate-600">
-            Some service and location details should be verified with the business before relying on
-            them for decisions.
+            &copy; {new Date().getFullYear()} {businessInfo.name}. All rights reserved. Licensed & insured
+            in the State of Maine.
           </p>
         </div>
       </div>
