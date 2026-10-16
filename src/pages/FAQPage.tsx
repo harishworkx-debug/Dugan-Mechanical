@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Phone,
   HelpCircle,
@@ -30,7 +30,7 @@ const guides = [
       {
         num: '1',
         title: 'Shut Off the Main Water Supply Immediately',
-        text: 'Locate your main shutoff valveâ€”typically located in the basement where the municipal water line enters the foundation wall, or near your well pressure tank. For quarter-turn ball valves, turn the lever perpendicular to the pipe. For older gate valves, turn clockwise until hand-tight.',
+        text: 'Locate your main shutoff valve—typically located in the basement where the municipal water line enters the foundation wall, or near your well pressure tank. For quarter-turn ball valves, turn the lever perpendicular to the pipe. For older gate valves, turn clockwise until hand-tight.',
       },
       {
         num: '2',
@@ -69,7 +69,7 @@ const guides = [
       {
         num: '2',
         title: 'Apply the 50% Repair Rule',
-        text: 'If the estimated cost of the repair exceeds 50% of the cost of a brand new, high-efficiency water heaterâ€”and the unit is already past mid-lifeâ€”investing that money toward a modern replacement with a fresh manufacturer warranty is recommended.',
+        text: 'If the estimated cost of the repair exceeds 50% of the cost of a brand new, high-efficiency water heater—and the unit is already past mid-life—investing that money toward a modern replacement with a fresh manufacturer warranty is recommended.',
       },
       {
         num: '3',
@@ -181,7 +181,7 @@ const guides = [
       {
         num: '4',
         title: 'Perform the 15-Minute Food Coloring Test',
-        text: 'Place 5â€“6 drops of dark food coloring in your toilet tank. Do not flush. Wait 15 minutes. If color appears in the bowl, water is bypassing your flapper seal and a commercial-grade flapper or flush valve rebuild is needed.',
+        text: 'Place 5–6 drops of dark food coloring in your toilet tank. Do not flush. Wait 15 minutes. If color appears in the bowl, water is bypassing your flapper seal and a commercial-grade flapper or flush valve rebuild is needed.',
       },
     ],
     primaryLink: '/toilet-repair-saco-me',
@@ -195,12 +195,12 @@ const faqItems = [
   {
     question: 'What should I do immediately if a pipe starts leaking?',
     answer:
-      'First, locate and turn off your main water shutoff valve immediately (typically located where the water main enters your basement or utility room) to stop water flow and limit damage. If water is leaking near electrical outlets, light fixtures, or your breaker panel, turn off electricity to that section if it is safe to do so. Open the lowest faucet in your home to drain remaining water from the lines, place towels or a bucket beneath the leak, and call Dugan Mechanical at +1 (207) 810-5194 for prompt dispatch.',
+      'First, locate and turn off your main water shutoff valve immediately (typically located where the water main enters your basement or utility room) to stop water flow and limit damage. If water is leaking near electrical outlets, light fixtures, or your breaker panel, turn off electricity to that section if it is safe to do so. Open the lowest faucet in your home to drain remaining water from the lines, place towels or a bucket beneath the leak, and call Dugan Mechanical at (207) 810-5194 for prompt dispatch.',
   },
   {
     question: 'When should a water heater be repaired versus replaced?',
     answer:
-      'If your water heater is under 8 to 10 years old and the problem is an isolated componentâ€”such as a faulty heating element, thermostat, thermocouple, or pressure relief valveâ€”repair is usually the most cost-effective solution. However, if the tank itself is actively leaking from internal corrosion, if the unit is over a decade old, or if rust-colored water persists, replacement is strongly recommended. Modern high-efficiency tank and tankless models significantly lower energy costs and prevent tank rupture.',
+      'If your water heater is under 8 to 10 years old and the problem is an isolated component—such as a faulty heating element, thermostat, thermocouple, or pressure relief valve—repair is usually the most cost-effective solution. However, if the tank itself is actively leaking from internal corrosion, if the unit is over a decade old, or if rust-colored water persists, replacement is strongly recommended. Modern high-efficiency tank and tankless models significantly lower energy costs and prevent tank rupture.',
   },
   {
     question: 'What causes recurring drain clogs in Southern Maine homes?',
@@ -210,12 +210,12 @@ const faqItems = [
   {
     question: 'Which areas does Dugan Mechanical serve?',
     answer:
-      'Dugan Mechanical is based in Saco, Maine. Our primary daily service territory covers York and Cumberland counties, including Saco, Biddeford, Scarborough, Old Orchard Beach, Portland, South Portland, Kennebunk, Buxton, Westbrook, and Falmouth. For scheduled heating projects, boiler replacements, or major remodels, we also accommodate neighboring Southern Maine communities. Call +1 (207) 810-5194 to confirm coverage for your address.',
+      'Dugan Mechanical is based in Saco, Maine. Our primary daily service territory covers York and Cumberland counties, including Saco, Biddeford, Scarborough, Old Orchard Beach, Portland, South Portland, Kennebunk, Buxton, Westbrook, and Falmouth. For scheduled heating projects, boiler replacements, or major remodels, we also accommodate neighboring Southern Maine communities. Call (207) 810-5194 to confirm coverage for your address.',
   },
   {
     question: 'How can a customer request an estimate or schedule service?',
     answer:
-      'You can schedule service or request an estimate by calling our office directly at +1 (207) 810-5194 to speak with our team. You can also submit an online request through our Contact page. We assess the scope of work, explain the recommended repair or installation options, and provide transparent upfront pricing before any work begins.',
+      'You can schedule service or request an estimate by calling our office directly at (207) 810-5194 to speak with our team. You can also submit an online request through our Contact page. We assess the scope of work, explain the recommended repair or installation options, and provide transparent upfront pricing before any work begins.',
   },
   {
     question: 'Do you service home heating systems and boilers as well as plumbing?',
@@ -363,7 +363,7 @@ export function FAQPage() {
                             <span>{guide.linkText}</span>
                             <ArrowRight className="h-3 w-3" />
                           </Link>
-                          <span className="text-slate-300">â€¢</span>
+                          <span className="text-slate-300">•</span>
                           <Link
                             to={guide.secondaryLink}
                             className="inline-flex items-center gap-1 font-medium text-slate-600 hover:text-blue-600 hover:underline"
@@ -377,7 +377,7 @@ export function FAQPage() {
                           className="inline-flex items-center gap-1.5 font-bold text-blue-700 hover:text-blue-800"
                         >
                           <Phone className="h-3.5 w-3.5" />
-                          <span>Call +1 (207) 810-5194 for Assistance</span>
+                          <span>Call (207) 810-5194 for Assistance</span>
                         </a>
                       </div>
                     </div>

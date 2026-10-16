@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Phone,
   ArrowRight,
@@ -49,7 +49,7 @@ const trustHighlights = [
   {
     icon: Award,
     title: 'Upfront Pricing',
-    desc: 'Clear, honest estimates before work beginsâ€”no surprise fees.',
+    desc: 'Clear, honest estimates before work begins—no surprise fees.',
   },
   {
     icon: Star,
@@ -129,7 +129,7 @@ const homeFaqs = [
   {
     question: 'How quickly can Dugan Mechanical respond to a plumbing issue?',
     answer:
-      'We prioritize rapid scheduling and emergency service for active leaks, burst pipes, and sewer backups. Call us directly at +1 (207) 810-5194 for immediate dispatch coordination across our Saco and Southern Maine service areas.',
+      'We prioritize rapid scheduling and emergency service for active leaks, burst pipes, and sewer backups. Call us directly at (207) 810-5194 for immediate dispatch coordination across our Saco and Southern Maine service areas.',
   },
   {
     question: 'Do you work on both residential and commercial properties in Maine?',
@@ -139,12 +139,12 @@ const homeFaqs = [
   {
     question: 'How do I know whether to repair or replace my water heater?',
     answer:
-      'If your water heater is under 8â€“10 years old and the issue is an isolated component (thermostat, heating element, T&P valve), repair is usually best. If the steel tank itself is leaking from corrosion, code requires a full unit replacement.',
+      'If your water heater is under 8–10 years old and the issue is an isolated component (thermostat, heating element, T&P valve), repair is usually best. If the steel tank itself is leaking from corrosion, code requires a full unit replacement.',
   },
   {
     question: 'What should I do immediately if a pipe bursts in my home?',
     answer:
-      'First, locate and shut off your main water shutoff valve immediately to stop water flow. Then turn off electricity to wet areas if safe. Open a lower faucet to drain remaining pressure, and call Dugan Mechanical at +1 (207) 810-5194.',
+      'First, locate and shut off your main water shutoff valve immediately to stop water flow. Then turn off electricity to wet areas if safe. Open a lower faucet to drain remaining pressure, and call Dugan Mechanical at (207) 810-5194.',
   },
   {
     question: 'Do you charge upfront or give estimates before starting work?',
@@ -201,7 +201,7 @@ export function HomePage() {
     <>
       <SEO
         title="Plumbing, Heating & HVAC in Saco, ME | Dugan Mechanical"
-        description="Looking for plumbing or heating service in Saco and Southern Maine? Contact Dugan Mechanical for plumbing repairs, water heaters, and heating solutions. Call +1 (207) 810-5194 to discuss your service needs."
+        description="Looking for plumbing or heating service in Saco and Southern Maine? Contact Dugan Mechanical for plumbing repairs, water heaters, and heating solutions. Call (207) 810-5194 to discuss your service needs."
         canonicalPath="/"
         ogImage={heroImage}
         structuredData={structuredData}
@@ -620,8 +620,8 @@ export function HomePage() {
                 </div>
               </div>
               <p className="mt-6 text-slate-300 leading-relaxed">
-                Calling allows you to explain the symptoms you are seeingâ€”whether it is water pooling,
-                a sudden pressure loss, or strange water heater noisesâ€”and get direct guidance on the best
+                Calling allows you to explain the symptoms you are seeing—whether it is water pooling,
+                a sudden pressure loss, or strange water heater noises—and get direct guidance on the best
                 course of action.
               </p>
               <div className="mt-6">
@@ -666,7 +666,7 @@ export function HomePage() {
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-500 mt-0.5">
                   <span>8 Verified Google Reviews</span>
-                  <span>â€¢</span>
+                  <span>•</span>
                   <a
                     href={businessInfo.mapsLink}
                     target="_blank"
@@ -780,7 +780,7 @@ export function HomePage() {
                 num: '1',
                 title: 'Call and Describe the Issue',
                 description:
-                  'Contact us at +1 (207) 810-5194 and describe what you are experiencing. We will help you troubleshoot immediately and assess urgency.',
+                  'Contact us at (207) 810-5194 and describe what you are experiencing. We will help you troubleshoot immediately and assess urgency.',
               },
               {
                 num: '2',
