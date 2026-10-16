@@ -1,7 +1,7 @@
 export const businessInfo = {
   name: 'Dugan Mechanical',
-  phone: '207-468-0807',
-  phoneLink: 'tel:2074680807',
+  phone: '+1 (207) 810-5194',
+  phoneLink: 'tel:+12078105194',
   website: 'https://www.duganmechanical.com/',
   mapsLink: 'https://maps.app.goo.gl/Xe9FyT3c2GZKtPsV7',
   mapsEmbed:

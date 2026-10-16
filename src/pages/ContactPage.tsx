@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Phone, Clock, MapPin, Send, CheckCircle2, ShieldCheck, Navigation } from 'lucide-react';
 import { SEO } from '@/components/SEO';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
@@ -121,7 +121,7 @@ export function ContactPage() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="207-xxx-xxxx"
+                        placeholder="(207) 810-5194"
                         className="mt-1.5 block w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
                       />
                     </div>
@@ -231,7 +231,7 @@ export function ContactPage() {
                     </div>
                     <div>
                       <p className="font-semibold text-slate-300">Operating Hours</p>
-                      <p className="text-white font-medium">Mon – Fri: 7:30 AM – 5:00 PM</p>
+                      <p className="text-white font-medium">Mon â€“ Fri: 7:30 AM â€“ 5:00 PM</p>
                       <p className="text-xs text-slate-400">Prompt dispatch coordination for urgent leaks</p>
                     </div>
                   </div>

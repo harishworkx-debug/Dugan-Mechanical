@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import {
   Phone,
@@ -317,7 +317,7 @@ export function ServiceLocationPage() {
                         <input
                           type="tel"
                           required
-                          placeholder="207-xxx-xxxx"
+                          placeholder="(207) 810-5194"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none"
