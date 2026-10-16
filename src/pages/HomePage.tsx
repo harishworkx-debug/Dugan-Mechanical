@@ -125,6 +125,34 @@ const seasonalTips = [
   },
 ];
 
+const homeFaqs = [
+  {
+    question: 'How quickly can Dugan Mechanical respond to a plumbing issue?',
+    answer:
+      'We prioritize rapid scheduling and emergency service for active leaks, burst pipes, and sewer backups. Call us directly at 207-468-0807 for immediate dispatch coordination across our Saco and Southern Maine service areas.',
+  },
+  {
+    question: 'Do you work on both residential and commercial properties in Maine?',
+    answer:
+      'Yes. We handle single-family homes, historic properties, condominiums, and commercial establishments like local retail shops and barbershops throughout York and Cumberland counties.',
+  },
+  {
+    question: 'How do I know whether to repair or replace my water heater?',
+    answer:
+      'If your water heater is under 8–10 years old and the issue is an isolated component (thermostat, heating element, T&P valve), repair is usually best. If the steel tank itself is leaking from corrosion, code requires a full unit replacement.',
+  },
+  {
+    question: 'What should I do immediately if a pipe bursts in my home?',
+    answer:
+      'First, locate and shut off your main water shutoff valve immediately to stop water flow. Then turn off electricity to wet areas if safe. Open a lower faucet to drain remaining pressure, and call Dugan Mechanical at 207-468-0807.',
+  },
+  {
+    question: 'Do you charge upfront or give estimates before starting work?',
+    answer:
+      'We believe in transparent, upfront communication. Our technician assesses the issue, explains the solution, and provides clear upfront pricing before any repair work begins.',
+  },
+];
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': ['Plumber', 'HVACBusiness'],
